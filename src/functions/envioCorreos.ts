@@ -9,6 +9,7 @@ interface RequestData {
     recipients: string;
     emailType: string;
     buttonText: string;
+    img : string;
 }
 
 const connectionString = process.env.COMMUNICATION_SERVICE_CONNECTION_STRING;
@@ -24,7 +25,7 @@ export async function envioCorreos(request: HttpRequest, context: InvocationCont
 
         emailContent = replacePlaceholders(emailContent, {
             title: requestData.title,
-            imageUrl: getImageUrl(requestData.emailType),
+            imageUrl: requestData.img,
             message: requestData.message,
             buttonUrl: requestData.buttonUrl,
             buttonText: requestData.buttonText || 've a la aplicacion'
@@ -58,16 +59,6 @@ export async function envioCorreos(request: HttpRequest, context: InvocationCont
     }
 }
 
-function getImageUrl(emailType: string): string {
-    switch (emailType) {
-        case "welcome":
-            return "https://www.questionpro.com/blog/wp-content/uploads/2023/07/2440-Portada-mensaje-de-bienvenida.jpg";
-        case "passwordReset":
-            return "https://scmlatam.com/wp-content/uploads/2023/09/induccion-de-personal.jpg";
-        default:
-            return "https://scmlatam.com/wp-content/uploads/2023/09/induccion-de-personal.jpg";
-    }
-}
 
 app.http('envioCorreos', {
     methods: ['POST'],

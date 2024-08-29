@@ -5,12 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Template</title>
     <style>
+            *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1{
+            margin: 3px 0 5px 0;
+            font-size: 30px;
+            color: #1f3fae;
+        }
+
         .email-container {
             font-family: Arial, sans-serif;
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
-            border: 1px solid #ddd;
+            border: 1px solid #aeb1b2;
+            text-align: center;
+        }
+
+        .email-container p{
+            color: #292a2c;
         }
 
         .email-image {
@@ -22,22 +39,28 @@
 
         .button-container {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         .email-button {
-            background-color: #007bff;
+            background-color: #1f3fae;
             color: white;
             padding: 10px 20px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 8px;
+        }
+        .email-button a{
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 300;
         }
     </style>
 </head>
 <body>
     <div class="email-container">
-        <h1>{{title}}</h1>
         <img src="{{imageUrl}}" alt="Email Image" class="email-image">
+        <h1>{{title}}</h1>
         <p>{{message}}</p>
         <div class="button-container">
             <a href="{{buttonUrl}}" class="email-button">{{buttonText}}</a>
